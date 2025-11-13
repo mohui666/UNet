@@ -43,7 +43,7 @@ http://brainiac2.mit.edu/isbi_challenge/home
     train-labels.tif      (30, 512, 512)
     test-volume.tif       (30, 512, 512)
 
-由于体积限制，本仓库不包含 .tif 数据文件与 .pth 模型权重文件，需要用户自行下载与训练。
+由于体积限制，本仓库不包含.pth 模型权重文件，需要用户自行下载与训练。
 
 ---
 
@@ -86,10 +86,6 @@ http://brainiac2.mit.edu/isbi_challenge/home
 - Accuracy / Recall / Precision（在有标签时使用）
 - Weighted CrossEntropyLoss（训练主损失）
 - 边界加权图（参考 U-Net 原论文的边界项设计）
-
-后续可扩展以支持 ISBI 官方指标，例如：
-- Warping Error
-- Rand Error / Rand F-score
 
 ---
 
