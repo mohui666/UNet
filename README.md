@@ -57,7 +57,7 @@ http://brainiac2.mit.edu/isbi_challenge/home
 
     unet_isbi2012_wc_best.pth
 
-该权重文件未被加入版本控制（已通过 .gitignore 忽略），请自行备份或另行托管。
+该权重文件未被加入版本控制，请自行备份或另行托管。
 
 ---
 
@@ -106,16 +106,6 @@ http://brainiac2.mit.edu/isbi_challenge/home
     pip install -r requirements.txt
 
 或手动安装上述包。
-
----
-
-## 🗒 TODO
-
-- [ ] 添加 ISBI 官方评估指标（Warping / Rand）  
-- [ ] 接入 TensorBoard 或其他可视化工具  
-- [ ] 支持 patch-based 训练以提升分辨率与效果  
-- [ ] 改为 padded UNet（避免大量 crop 操作）
-
 ---
 
 ## 📜 License
