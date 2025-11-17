@@ -26,7 +26,6 @@
     ├── infer.py                # 推理脚本
     ├── utils.py                # 数据集、增强、裁剪、KFold、init_weights
     ├── loss.py                 # 权重图、Dice 计算等
-    ├── test.py                 # 模型结构/前向测试
     ├── .gitignore              # 忽略大文件、数据集、权重等
     └── ISBI-2012-challenge/    # 本地数据集目录（不在仓库中）
 
