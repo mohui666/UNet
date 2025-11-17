@@ -45,7 +45,7 @@ class ISBI2012(Dataset):
             os.path.join(path, "test-volume.tif"))
         self.Y = tifffile.imread(os.path.join(path, "train-labels.tif")) if is_train else tifffile.imread(
             os.path.join(path, "test-labels.tif"))
-        if (self.Y is not None):
+        if self.Y is not None:
             self.Y = (self.Y > 0).astype("uint8")
         self.transform = transform
         self.slices = slices if slices is not None else np.arange(self.X.shape[0])
@@ -72,6 +72,41 @@ class ISBI2012(Dataset):
         mask = torch.tensor(mask, dtype=torch.long)
         return img, mask
 
+
+class TiffDateset(Dataset):
+    def __init__(self, train_volume_path=None, train_label_path=None, test_volume_path=None, test_label_path=None,
+                 is_train=True, transform=None, slices=None):
+        self.X = tifffile.imread(train_volume_path) if is_train else tifffile.imread(train_volume_path)
+        self.Y = tifffile.imread(train_label_path) if is_train else tifffile.imread(test_label_path)
+        self.transform = transform
+        self.slices = slices if slices is not None else np.arange(self.X.shape[0])
+
+    def __len__(self):
+        return len(self.slices)
+
+    def __getitem__(self, idx):
+        d = self.slices[idx]
+        img = self.X[d]
+        if len(img.shape) == 2:
+            img = img[..., None]
+
+        assert len(img.shape) == 3
+
+        if self.Y is None:
+            if self.transform:
+                out = self.transform(image=img)
+                return out["image"]
+            return torch.tensor(img, dtype=torch.float32)
+
+        mask = self.Y[d]
+        if self.transform:
+            out = self.transform(image=img, mask=mask)
+            img, mask = out["image"], out["mask"]
+            return img.float(), mask.long()
+
+        img = torch.tensor(img, dtype=torch.float32)
+        mask = torch.tensor(mask, dtype=torch.long)
+        return img, mask
 
 def kfold(D=30):
     slices = np.arange(D)
