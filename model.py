@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 
-from utils import crop
+from .utils import crop
 
 
 class u_net(nn.Module):
