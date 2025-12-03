@@ -10,7 +10,7 @@ class u_net(nn.Module):
         self.in_size = in_size
         self.in_channel = in_channel
         self.down1 = nn.Sequential(
-            nn.Conv2d(1, 64, 3),
+            nn.Conv2d(in_channel, 64, 3),
             nn.ReLU(),
             nn.Conv2d(64, 64, 3),
             nn.ReLU()
