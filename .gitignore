@@ -3,3 +3,12 @@
 .idea/UNet.iml
 .idea/inspectionProfiles/Project_Default.xml
 .idea/inspectionProfiles/profiles_settings.xml
+unet.egg-info/PKG-INFO
+unet.egg-info/SOURCES.txt
+unet.egg-info/top_level.txt
+unet.egg-info/dependency_links.txt
+unet/infer.py
+unet/loss.py
+unet/model.py
+unet/train.py
+unet/utils.py
