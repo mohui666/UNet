@@ -206,7 +206,7 @@ class TiffDateset(Dataset):
     """
     def __init__(self, train_volume_path=None, train_label_path=None, test_volume_path=None, test_label_path=None,
                  is_train=True, transform=None, slices=None):
-        self.X = tifffile.imread(train_volume_path) if is_train else tifffile.imread(train_volume_path)
+        self.X = tifffile.imread(train_volume_path) if is_train else tifffile.imread(test_volume_path)
         self.Y = tifffile.imread(train_label_path) if is_train else tifffile.imread(test_label_path)
         self.transform = transform
         self.slices = slices if slices is not None else np.arange(self.X.shape[0])

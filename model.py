@@ -32,7 +32,7 @@ class u_net(nn.Module):
         # down1: 572x572x1 -> 568x568x64
         # 第一层编码器，提取低级特征（边缘、纹理等）
         self.down1 = nn.Sequential(
-            nn.Conv2d(1, 64, 3),      # 3x3 卷积，valid padding
+            nn.Conv2d(in_channel, 64, 3),      # 3x3 卷积，valid padding
             nn.ReLU(),
             nn.Conv2d(64, 64, 3),
             nn.ReLU()
